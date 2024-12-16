@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blog Posts</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="title">
+            <h1>AI Video Summarizer</h1>
+        </div>
+        <div class="">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="#">Welcome {{user.username}}</a></li>
+                <li class="nav-item"><a href="/blog-list">Saved Video Summaries</a></li>
+                <li class="nav-item"><a href="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+  <div class = "wrapper">
+    <section class="blog-section">
+        <h1 class="section-heading">All Video summaries</h1>
+        
+        <div class="blog-posts">
+            <!-- Blog Post 1 -->
+        {% for article in blog_articles reversed%}
+            <article class="blog-post">
+                <div class="delete-icon">
+                    <a href ="delete/{{article.id}}"><img src="{% static 'images/delete-icon.svg' %}" height="25px" alt="delete-icon"/>
+                    </a> 
+                  </div>
+            <a href="blog-details/{{article.id}}">
+                <h2 class="blog-title">{{article.youtube_title}}</h2>
+                <div class="blog-content">
+                    {{article.generated_content|truncatechars:100|safe}}
+                </div>
+                <span class="post-date">created at {{ article.created_at }}</span>
+            </a>
+                
+            </article>
+        {% endfor %}
+        </div>
+    </section>
+</div>  
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Details</title>
+    <link rel="stylesheet" href="{% static 'blog_details.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="title">
+            <h1>AI Video Summarizer</h1>
+        </div>
+        <div class="">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="#">Welcome {{user.username}}</a></li>
+                <li class="nav-item"><a href="/blog-list">Saved Video Summaries</a></li>
+                <li class="nav-item"><a href="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-heading">
+            <h1>Video Summary</h1>
+        </div>
+
+        <div class="blog-section">
+            <h2>{{blog_article.youtube_title}}</h2>
+            <div class="content"> 
+               {{ blog_article.generated_content | safe}}
+            </div>
+        </div>
+
+        <div class="youtube-title-section">
+            <h2>Youtube Title</h2>
+            <div class="content">
+                {{blog_article.youtube_title}}
+            </div>
+        </div>
+
+        <div class="youtube-link-section">
+            <h2>Youtube Link</h2>
+            <div class="content">
+                <a href="https://youtube.com/watch?example-video" target="_blank">
+                   {{blog_article.youtube_link}}
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

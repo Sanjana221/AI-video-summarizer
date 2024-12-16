@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="title">
+            <h1>AI Video Summarizer</h1>
+        </div>
+        <div class="">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="login">Login</a></li>
+                <li class="nav-item"><a href="signup">Signup</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="login-body">
+        <div class="login-container">
+        <h2 class="login-heading">Login</h2>
+        <form class="login-form" action="" method="POST">
+            {% csrf_token %}
+
+            {% if error_message %}
+            <div style="text-align: center;">
+                <h2 style="color:red">
+                    {{ error_message }}
+                </h2>
+            </div>
+            {% endif %}
+
+         <label for="username" class="form-label">Username</label>
+            <input 
+                type="text" 
+                class="form-input" 
+                name = "username"
+                placeholder="Username" 
+                required
+            >
+            <label for="password" class="form-label">Password</label>
+            <input 
+                type="password" 
+                class="form-input" 
+                name = "password"
+                placeholder="Password" 
+                required
+            >
+            <button type="submit" class="login-button">Login</button>
+        </form>
+        </div>
+</section>
+
+    
+</body>
+</html>

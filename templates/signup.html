@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="title">
+            <h1>AI Video Summarizer</h1>
+        </div>
+        <div class="" action="" method="POST">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="login">Login</a></li>
+                <li class="nav-item"><a href="signup">Signup</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="signup-body">
+        <div class="login-container">
+        <h2 class="login-heading">Singup</h2>
+        <form class="login-form" action="" method = "POST">
+            {% csrf_token %}
+
+            {% if error_message %}
+            <div style="text-align: center;">
+                <h2 style="color:red">
+                    {{ error_message }}
+                </h2>
+            </div>
+            {% endif %}
+         <label for="username" class="form-label">Username</label>
+            <input 
+                type="text" 
+                id="username"
+                name="username"
+                class="form-input" 
+                placeholder="Username" 
+                required
+            >
+        <label for="email" class="form-label">Enter Email</label>
+            <input 
+                type="email" 
+                name="email"
+                id="email"
+                class="form-input" 
+                placeholder="Email" 
+                required
+            >
+        <label for="password" class="form-label">Password</label>
+            <input 
+                type="password" 
+                name="password"
+                id="password"
+                class="form-input" 
+                placeholder="Password" 
+                required
+            >
+            <label for="repeat-password" class="form-label">Enter Password Again</label>
+            <input 
+                type="password" 
+                id="repeat-password"
+                name="repeat-password"
+                class="form-input" 
+                placeholder="Repeat your Password" 
+                required
+            >
+            <button type="submit" class="login-button">Signup</button>
+        </form>
+        </div>
+</section>
+
+    
+</body>
+</html>

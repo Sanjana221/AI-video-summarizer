@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Summarizer</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="title">
+            <h1>AI Video Summarizer</h1>
+        </div>
+        <div class="">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#">Welcome {{user.username}}</a></li>
+                <li class="nav-item"><a href="blog-list">Saved Video Summaries</a></li>
+                 {% if request.user.is_authenticated %}
+                <li class="nav-item"><a href="logout">Logout</a></li>
+                 {% else %} 
+                <li class="nav-item"><a href="login">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+            <section class="welcome-section">
+                <div class="intro-title">
+                <h2>Welcome to AI Blog Generator</h2>
+                <p class="intro-text">
+                 Tired of watching long videos? With the help of our AI powered youtube video summarizer you can 
+                 summarize any video and save yourself a great amount of time.Paste the link of video and get the 
+                 summary of your video in just few seconds.
+                </p>
+                </div>
+
+                <div class="youtube-url-section">
+                    <h3 class="youtube-url-heading">Enter YouTube Video URL</h3>
+                    <div class="url-input-container">
+                        <input 
+                            type="url" 
+                            id = "youtube-url"
+                            class="youtube-url-input" 
+                            placeholder="Paste your YouTube video link here" 
+                            pattern="^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
+                            required
+                        >
+                        <button type="submit" class="generate-btn" id = "generateBlogButton">Generate</button>
+                    </div>
+                </div>
+
+                <div class="" id="generated-section">
+                    <h3 class="generated-blog-heading" id="heading"></h3>
+                    <div class="generated-blog-content" id = "blog-content">
+                     
+                    </div>
+                </div>
+
+            </section>   
+    
+    <script>
+        document.getElementById('generateBlogButton').addEventListener('click',async () => {
+
+            document.getElementById('heading').innerHTML = '';
+            document.getElementById('generated-section').classList.remove("generated-blog-section")
+             
+            const theButton = document.querySelector(".generate-btn");
+            theButton.classList.add("button--loading");
+            theButton.innerHTML = "";
+            
+            const youtubeLink = document.getElementById('youtube-url').value;
+            const blogContent = document.getElementById('blog-content');
+
+            if(youtubeLink){
+                blogContent.innerHTML = '';
+
+                const endpointUrl = '/generate-blog';
+
+                try {
+                    const response = await fetch(endpointUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ link: youtubeLink })
+                    });
+
+                    const data = await response.json();
+                    theButton.classList.remove("button--loading");
+                    theButton.innerHTML = "Generate";
+                    blogContent.innerHTML = data.content;
+                    document.getElementById('heading').innerHTML = 'Summary';
+                    document.getElementById('generated-section').classList.add("generated-blog-section");
+
+                    } catch (error) {
+                    console.error("Error occurred:", error);
+                    alert("Something went wrong. Please try again later.");
+                    
+                }
+            }  else {
+                alert("Please enter a YouTube link.");
+            }
+        });
+    </script>
+    
+</body>
+
+</html>
