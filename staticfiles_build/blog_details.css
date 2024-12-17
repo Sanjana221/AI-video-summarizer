@@ -1,0 +1,128 @@
+body{
+    background-color: rgb(227, 240, 239);
+    font-family: Arial, sans-serif;
+}
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: #11b3a5;
+    padding: 1.3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+    color: #d0f3f1;
+}
+
+.title{
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.options a{
+    color:white;
+    font-size: 20px;
+}
+
+a:link{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1000px;
+    padding: 50px;
+    margin: 50px 50px 50px 170px;
+}
+
+.main-heading {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background: linear-gradient(135deg, #129680, #70d6ce);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-section {
+    background-color: white;
+    padding: 20px 50px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.blog-section h2{
+  margin-bottom: 20px;
+}
+
+.youtube-title-section {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.youtube-title-section h2{
+    margin-bottom: 15px;
+}
+
+.youtube-link-section {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.youtube-link-section h2{
+    margin-bottom: 15px;
+}
+
+.blog-section h1 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.content {
+    color: #555;
+    line-height: 1.6;
+}
+
+footer {
+    background-color: #119186;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    bottom: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
