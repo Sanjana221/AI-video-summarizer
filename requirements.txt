@@ -34,6 +34,7 @@ parso==0.8.4
 prompt_toolkit==3.0.48
 proto-plus==1.25.0
 protobuf==5.29.1
+psycopg2==2.9.10
 psycopg2-binary==2.9.10
 pure_eval==0.2.3
 pyasn1==0.6.1
@@ -56,4 +57,5 @@ tzdata==2024.2
 uritemplate==4.1.1
 urllib3==2.2.3
 wcwidth==0.2.13
+whitenoise==6.8.2
 youtube-transcript-api==0.6.3
